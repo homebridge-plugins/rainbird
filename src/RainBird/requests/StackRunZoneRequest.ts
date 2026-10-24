@@ -31,6 +31,11 @@ export class StackRunZoneRequest extends Request {
   }
 
   toBuffer(): Buffer {
-    return Buffer.from([this.type, this._page, this._zone, this._minutes])
+    return Buffer.from([
+      this.type,
+      this._page,
+      this._zone,
+      this._minutes,
+    ])
   }
 }

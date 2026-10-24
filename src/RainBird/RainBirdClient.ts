@@ -78,7 +78,9 @@ export class RainBirdClient extends events.EventEmitter {
   // NOTE: rejectUnauthorized is false because RainBird controllers use self-signed
   // certificates. This is a known security trade-off for local LAN communication;
   // certificate pinning is not feasible as the cert is device-generated.
-  private readonly _httpsAgent: Agent = new Agent({ connect: { rejectUnauthorized: false } })
+  private readonly _httpsAgent: Agent = new Agent({
+    connect: { rejectUnauthorized: false },
+  })
 
   // Error codes that indicate a transport/TLS failure (not an HTTP-level error).
   // Used during protocol discovery to decide whether to fall back from HTTPS to HTTP.
@@ -427,7 +429,9 @@ export class RainBirdClient extends events.EventEmitter {
         } else {
           url = this._url
           // _httpsAgent is used when the controller speaks HTTPS; undefined for HTTP.
-          dispatcher = this._url.startsWith('https:') ? this._httpsAgent : undefined
+          dispatcher = this._url.startsWith('https:')
+            ? this._httpsAgent
+            : undefined
         }
 
         const data: Buffer = this.encrypt(request.type)

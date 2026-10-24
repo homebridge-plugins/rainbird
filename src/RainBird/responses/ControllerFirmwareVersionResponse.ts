@@ -16,7 +16,9 @@ export class ControllerFirmwareVersionResponse extends Response {
     // fifth. It threw a RangeError, and because the request is retryable the
     // library then re-sent it every 60 seconds forever, so the controller was
     // usable but the log never stopped filling up.
-    this._patch = response.length >= 5 ? response.readUInt16BE(3) : (response[3] ?? 0)
+    this._patch = response.length >= 5
+      ? response.readUInt16BE(3)
+      : (response[3] ?? 0)
   }
 
   get type(): number {

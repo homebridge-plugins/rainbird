@@ -21,6 +21,9 @@ export class RetrieveScheduleRequest extends Request {
   toBuffer(): Buffer {
     const page = Buffer.alloc(2)
     page.writeUInt16BE(this._page)
-    return Buffer.concat([Buffer.from([this.type]), page])
+    return Buffer.concat([
+      Buffer.from([this.type]),
+      page,
+    ])
   }
 }

@@ -15,7 +15,13 @@ import { ModelAndVersionResponse } from './ModelAndVersionResponse.js'
 describe('modelAndVersionResponse', () => {
   // 0x82, model (2 bytes, big endian), major, minor
   const buffer = (model: number, major: number, minor: number) =>
-    Buffer.from([0x82, (model >> 8) & 0xFF, model & 0xFF, major, minor])
+    Buffer.from([
+      0x82,
+      (model >> 8) & 0xFF,
+      model & 0xFF,
+      major,
+      minor,
+    ])
 
   it('reads the model number as big endian', () => {
     // Little endian would read 0x0900 here, so this pins the byte order.

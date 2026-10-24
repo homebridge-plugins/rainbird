@@ -43,6 +43,11 @@ export class ControllerTimeSetRequest extends Request {
   }
 
   toBuffer(): Buffer {
-    return Buffer.from([this.type, this.hour, this.minute, this.second])
+    return Buffer.from([
+      this.type,
+      this.hour,
+      this.minute,
+      this.second,
+    ])
   }
 }

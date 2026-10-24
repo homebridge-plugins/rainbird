@@ -490,7 +490,9 @@ export class RainBirdService extends events.EventEmitter {
   private async updateStatus(): Promise<void> {
     const status = await this.getRainBirdState()
 
-    const currentZone = status.runningZoneIndex !== undefined ? status.zones[status.runningZoneIndex] : undefined
+    const currentZone = status.runningZoneIndex !== undefined
+      ? status.zones[status.runningZoneIndex]
+      : undefined
 
     const previousZoneId = this._currentZoneId
     this._currentZoneId = currentZone?.id ?? 0
@@ -499,7 +501,9 @@ export class RainBirdService extends events.EventEmitter {
     }
 
     const previousProgramId = this._currentProgramId
-    this._currentProgramId = status.program !== undefined ? this.getProgramId(status.program.id) : undefined
+    this._currentProgramId = status.program !== undefined
+      ? this.getProgramId(status.program.id)
+      : undefined
     if (previousProgramId !== undefined && previousProgramId !== '' && previousProgramId !== this._currentProgramId) {
       this.emitLog('info', `Program ${previousProgramId}: Complete`)
     }
@@ -525,7 +529,9 @@ export class RainBirdService extends events.EventEmitter {
 
       zone.running = status.zones[statusZoneIndex].running
       zone.remainingDuration = status.zones[statusZoneIndex].timeRemaining ?? 0
-      zone.durationTime = zone.running ? new Date() : undefined
+      zone.durationTime = zone.running
+        ? new Date()
+        : undefined
       zone.active = zone.remainingDuration > 0
       zone.queued = false
     }
@@ -764,10 +770,18 @@ export class RainBirdService extends events.EventEmitter {
     this.emitLog('warn', 'This plugin does not fully support your RainBird model and may not not correctly show the zone\'s state such as time remaining')
     this.emitLog('warn', 'If you would like better support please create a GitHub issue [https://github.com/homebridge-plugins/rainbird/issues]')
     this.emitLog('warn', 'and supply the following details:')
-    this.emitLog('warn', `  Model: ${this.model}, Zones: ${[...this.zones.keys()]}`)
-    this.emitLog('warn', `  ProgramZoneState Page 0: ${[...page0.values()]}`)
-    this.emitLog('warn', `  ProgramZoneState Page 1: ${[...page1.values()]}`)
-    this.emitLog('warn', `  ProgramZoneState Page 2: ${[...page2.values()]}`)
+    this.emitLog('warn', `  Model: ${this.model}, Zones: ${[
+      ...this.zones.keys(),
+    ]}`)
+    this.emitLog('warn', `  ProgramZoneState Page 0: ${[
+      ...page0.values(),
+    ]}`)
+    this.emitLog('warn', `  ProgramZoneState Page 1: ${[
+      ...page1.values(),
+    ]}`)
+    this.emitLog('warn', `  ProgramZoneState Page 2: ${[
+      ...page2.values(),
+    ]}`)
     this.emitLog('warn', 'Also include your model (if different to the one above), which program is running and')
     this.emitLog('warn', 'the time remaining for the currently running zone as well as for the other idle/waiting zones')
   }

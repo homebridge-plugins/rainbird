@@ -45,6 +45,9 @@ export class ControllerDateSetRequest extends Request {
   toBuffer(): Buffer {
     const monthYear = Buffer.alloc(2)
     monthYear.writeUInt16BE(this.month * 4096 + this.year)
-    return Buffer.concat([Buffer.from([this.type, this.day]), monthYear])
+    return Buffer.concat([
+      Buffer.from([this.type, this.day]),
+      monthYear,
+    ])
   }
 }

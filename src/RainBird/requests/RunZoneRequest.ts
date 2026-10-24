@@ -35,6 +35,10 @@ export class RunZoneRequest extends Request {
   toBuffer(): Buffer {
     const zone = Buffer.alloc(2)
     zone.writeUInt16BE(this.zone)
-    return Buffer.concat([Buffer.from([this.type]), zone, Buffer.from([this.duration])])
+    return Buffer.concat([
+      Buffer.from([this.type]),
+      zone,
+      Buffer.from([this.duration]),
+    ])
   }
 }

@@ -25,6 +25,9 @@ export class IrrigationDelaySetRequest extends Request {
   toBuffer(): Buffer {
     const days = Buffer.alloc(2)
     days.writeUInt16BE(this.days)
-    return Buffer.concat([Buffer.from([this.type]), days])
+    return Buffer.concat([
+      Buffer.from([this.type]),
+      days,
+    ])
   }
 }
