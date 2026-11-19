@@ -86,12 +86,12 @@
     "@types/node": "^26.6.6",
     "eslint": "^10.15.0",
     "eslint-plugin-format": "^2.0.1",
-    "eslint-plugin-perfectionist": "^5.13.0",
+    "eslint-plugin-perfectionist": "^5.14.0",
     "nodemon": "^3.1.14",
     "shx": "^0.4.0",
     "ts-node": "^10.9.2",
     "typedoc": "^0.28.20",
     "typescript": "^6.0.3",
-    "vitest": "^5.1.0"
+    "vitest": "^5.1.1"
   }
 }
