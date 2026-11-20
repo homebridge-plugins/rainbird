@@ -78,7 +78,7 @@
     "p-queue": "^10.0.0",
     "rxjs": "^7.8.2",
     "text-encoder": "0.0.4",
-    "undici": "^8.12.4"
+    "undici": "^8.13.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^10.0.0",
